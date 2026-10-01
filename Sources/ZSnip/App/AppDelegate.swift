@@ -67,6 +67,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             menu.addItem(entry)
         }
 
+        for name in registry.pendingDownloads {
+            let pending = NSMenuItem(title: "⟳ \(name) (downloading from iCloud…)", action: nil, keyEquivalent: "")
+            pending.isEnabled = false
+            menu.addItem(pending)
+        }
+
         for error in registry.loadErrors {
             let bad = NSMenuItem(title: "⚠︎ \(error)", action: nil, keyEquivalent: "")
             bad.isEnabled = false
@@ -74,6 +80,16 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         }
 
         menu.addItem(.separator())
+        menu.addItem(item("Import Uploaders…", #selector(importUploaders)))
+        menu.addItem(item("Export Uploaders…", #selector(exportUploaders)))
+
+        let sync = item("Sync with iCloud Drive", #selector(toggleICloudSync))
+        sync.state = Settings.syncUploadersWithICloud ? .on : .off
+        if UploaderRegistry.iCloudDriveRoot == nil {
+            sync.title = "Sync with iCloud Drive (iCloud Drive is off)"
+            sync.action = nil // menus auto-enable any item with an action
+        }
+        menu.addItem(sync)
         menu.addItem(item("Open Uploaders Folder", #selector(openUploadersFolder)))
         return menu
     }
@@ -99,6 +115,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
     @objc private func selectUploader(_ sender: NSMenuItem) {
         Settings.activeUploaderID = sender.representedObject as? String
+    }
+
+    @objc private func importUploaders() { UploaderTransfer.importFiles() }
+
+    @objc private func exportUploaders() { UploaderTransfer.exportAll() }
+
+    @objc private func toggleICloudSync() {
+        do {
+            try UploaderRegistry.shared.setICloudSync(!Settings.syncUploadersWithICloud)
+        } catch {
+            Alerts.show(title: "Couldn't change iCloud Drive sync", message: error.localizedDescription)
+        }
     }
 
     @objc private func openUploadersFolder() {

@@ -57,6 +57,14 @@ Any image host that takes a POST and returns a URL can be added without code. Pu
 | `urlJSONPath` | Dot path to the link in the JSON response (`files.0.url` indexes arrays). Leave it out if the response is the URL as plain text |
 | `deletionURLJSONPath`, `thumbnailURLJSONPath` | Optional |
 
+Uploaders stay on your Mac: they're never part of this repo or the app you download.
+
+- **Import / Export Uploaders…** (in the Upload Destination menu) saves all of them to one file, or loads
+  that file (or a single uploader file) back. Importing never overwrites: a different uploader with the
+  same name is added as "Name 2". The export includes any API keys, so keep it private.
+- **Sync with iCloud Drive** keeps them in iCloud Drive › ZSnip › Uploaders, so every Mac signed in to the
+  same Apple Account sees the same uploaders. Turning it on or off copies files across without deleting any.
+
 For hosts that need real logic (OAuth, signed requests, multi-step uploads), implement the
 `ImageUploader` protocol in `Sources/ZSnip/Upload/` and add it to `builtIn` in `UploaderRegistry.swift`.
 

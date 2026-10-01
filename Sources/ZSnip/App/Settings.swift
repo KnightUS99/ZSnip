@@ -31,6 +31,12 @@ enum Settings {
         set { defaults.set(newValue, forKey: "blurOutsideSelection") }
     }
 
+    /// Keep uploader configs in iCloud Drive › ZSnip › Uploaders instead of only on this Mac.
+    static var syncUploadersWithICloud: Bool {
+        get { defaults.bool(forKey: "syncUploadersWithICloud") }
+        set { defaults.set(newValue, forKey: "syncUploadersWithICloud") }
+    }
+
     /// ID of the uploader used by ⌃↩ / ⇧↩ in the overlay; nil means uploading is off.
     static var activeUploaderID: String? {
         get { defaults.string(forKey: "activeUploaderID") }
