@@ -34,7 +34,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         menu.addItem(item("Change Hotkey…", #selector(changeHotkey)))
         menu.addItem(.separator())
 
-        let uploadItem = NSMenuItem(title: "Upload Destination (⇧↩)", action: nil, keyEquivalent: "")
+        let uploadItem = NSMenuItem(title: "Upload Destination (⌃↩)", action: nil, keyEquivalent: "")
         uploadItem.submenu = uploadMenu()
         menu.addItem(uploadItem)
 

@@ -68,7 +68,7 @@ final class ToolbarView: NSView {
             .button(symbol: "doc.on.clipboard", title: "Copy", key: "↩", active: false, action: .copy),
         ]
         if c.canUpload {
-            items.append(.button(symbol: "icloud.and.arrow.up", title: "Upload", key: "⇧↩", active: false, action: .upload))
+            items.append(.button(symbol: "icloud.and.arrow.up", title: "Upload", key: "⌃↩", active: false, action: .upload))
         }
         items.append(.button(symbol: "xmark", title: nil, key: "Esc", active: false, action: .cancel))
         return items

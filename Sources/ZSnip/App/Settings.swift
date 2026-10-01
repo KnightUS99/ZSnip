@@ -31,7 +31,7 @@ enum Settings {
         set { defaults.set(newValue, forKey: "blurOutsideSelection") }
     }
 
-    /// ID of the uploader used by ⇧↩ in the overlay; nil means uploading is off.
+    /// ID of the uploader used by ⌃↩ / ⇧↩ in the overlay; nil means uploading is off.
     static var activeUploaderID: String? {
         get { defaults.string(forKey: "activeUploaderID") }
         set { defaults.set(newValue, forKey: "activeUploaderID") }

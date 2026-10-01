@@ -29,7 +29,7 @@ Everything is also clickable in the toolbar at the top of the capture screen.
 | **B** | Blur toggle (stays on until turned off): ↩ copies the whole screen, blurred everywhere except the selection (or the area around your drawings) |
 | ⌘Z or ⌫ | Undo the last shape |
 | ↩ | Copy the selection. With no selection it copies the area around your drawings (shown dashed), or the whole screen if you haven't drawn anything |
-| ⇧↩ | Upload with the active destination, then copy the link |
+| ⌃↩ (or ⇧↩) | Upload with the active destination, then copy the link |
 | Esc | Cancel |
 
 ## Upload destinations

@@ -110,7 +110,9 @@ final class CaptureController {
         let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
         switch Int(event.keyCode) {
         case 53: perform(.cancel); return true                                   // Esc
-        case 36, 76: perform(flags.contains(.shift) ? .upload : .copy); return true // Return, keypad Enter
+        case 36, 76: // Return, keypad Enter; ⌃ or ⇧ uploads instead of copying
+            perform(flags.contains(.control) || flags.contains(.shift) ? .upload : .copy)
+            return true
         case 51, 117: perform(.undo); return true                                // Delete, Forward Delete
         default: break
         }
