@@ -38,7 +38,8 @@ fi
 # 2. Build + sign
 ./build.sh
 APP=build/ZSnip.app
-codesign -dv "$APP" 2>&1 | grep -q "Authority=Developer ID Application" || die "app isn't signed with a Developer ID certificate"
+SIGNING_INFO="$(codesign -dv "$APP" 2>&1)"
+[[ "$SIGNING_INFO" == *"Authority=Developer ID Application"* ]] || die "app isn't signed with a Developer ID certificate"
 
 # 3. Notarize + staple
 ZIP="build/ZSnip-$VERSION.zip"
