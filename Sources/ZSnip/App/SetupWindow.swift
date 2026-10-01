@@ -127,11 +127,9 @@ struct SetupView: View {
 
     private var header: some View {
         HStack(spacing: 14) {
-            Image(systemName: "scissors")
-                .font(.system(size: 28, weight: .semibold))
-                .foregroundStyle(.white)
-                .frame(width: 52, height: 52)
-                .background(RoundedRectangle(cornerRadius: 12).fill(Color.accentColor))
+            Image(nsImage: NSApp.applicationIconImage)
+                .resizable()
+                .frame(width: 64, height: 64)
             VStack(alignment: .leading, spacing: 2) {
                 Text("Welcome to ZSnip").font(.title2.bold())
                 Text("A couple of quick steps and you're ready to snip.")

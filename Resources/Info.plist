@@ -6,6 +6,8 @@
     <string>ZSnip</string>
     <key>CFBundleDisplayName</key>
     <string>ZSnip</string>
+    <key>CFBundleIconFile</key>
+    <string>AppIcon</string>
     <key>CFBundleIdentifier</key>
     <string>com.zeliot.zsnip</string>
     <key>CFBundleExecutable</key>

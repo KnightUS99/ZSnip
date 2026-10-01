@@ -69,6 +69,9 @@ Needs Xcode or the Command Line Tools.
 ./build.sh --install    # copy to /Applications (recommended before enabling Launch at Login)
 ```
 
+The app icon is drawn in code: edit `scripts/make-icon.swift` and run `swift scripts/make-icon.swift`
+to regenerate `Resources/AppIcon.icns`. The menu-bar glyph lives in `Sources/ZSnip/App/MenuBarIcon.swift`.
+
 Without a Developer ID or Apple Development certificate the app is ad-hoc signed, and macOS asks
 for Screen Recording permission again after every rebuild.
 
